@@ -127,3 +127,43 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Folders
+project/taq_data
+project/taq_plot
+
+.vscode/
+
+# Other
+.png
+.jpeg
+.gif
+.lyx~
+
+# Latex
+*.aux
+*.glo
+*.idx
+*.log
+*.toc
+*.ist
+*.acn
+*.acr
+*.alg
+*.bbl
+*.blg
+*.dvi
+*.glg
+*.gls
+*.ilg
+*.ind
+*.lof
+*.lot
+*.maf
+*.mtc
+*.mtc1
+*.out
+*.synctex.gz
+*.brf
+*.fdb_latexmk
+*.fls
