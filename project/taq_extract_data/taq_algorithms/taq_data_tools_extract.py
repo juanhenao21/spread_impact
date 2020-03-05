@@ -5,7 +5,6 @@ whole implementation. These tools improve the way the tasks are standardized
 in the modules that use them.
 
 This script requires the following modules:
-    * numpy
     * os
     * pandas
     * pickle
@@ -26,7 +25,6 @@ The module contains the following functions:
 # -----------------------------------------------------------------------------
 # Modules
 
-import numpy as np
 import os
 import pandas as pd
 import pickle
