@@ -4,10 +4,13 @@ The functions in the module extract the data from binary format to CSV files.
 
 
 This script requires the following modules:
+    * itertools.product
+    * multiprocessing
     * numpy
     * os
     * pandas
     * pickle
+    * subprocess
     * taq_data_tools_extract
 
 The module contains the following functions:
@@ -26,10 +29,13 @@ The module contains the following functions:
 # ----------------------------------------------------------------------------
 # Modules
 
+from itertools import product as iprod
+import multiprocessing as mp
 import numpy as np
 import os
 import pandas as pd
 import pickle
+import subprocess
 
 import taq_data_tools_extract
 
@@ -219,10 +225,8 @@ def taq_daily_data_extract(tickers, year):
     # Extract daily data
     with mp.Pool(processes=mp.cpu_count()) as pool:
         print('Extracting daily data')
-        pool.starmap(taq_data_analysis_extract.taq_data_extract,
-                     iprod(tickers, ['quotes'], [year]))
-        pool.starmap(taq_data_analysis_extract.taq_data_extract,
-                     iprod(tickers, ['trades'], [year]))
+        pool.starmap(taq_data_extract, iprod(tickers, ['quotes'], [year]))
+        pool.starmap(taq_data_extract, iprod(tickers, ['trades'], [year]))
 
     return None
 
