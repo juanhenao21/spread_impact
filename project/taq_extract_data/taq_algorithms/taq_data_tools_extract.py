@@ -56,11 +56,11 @@ def taq_save_data(function_name, data, ticker_i, ticker_j, year, month, day):
 
     # Saving data
 
-    if (not os.path.isdir(f'../../taq_data/responses_physical_data_{year}/'
+    if (not os.path.isdir(f'../../taq_data/extract_data_{year}/'
                           + f'{function_name}/')):
 
         try:
-            os.mkdir(f'../../taq_data/responses_physical_data_{year}/'
+            os.mkdir(f'../../taq_data/extract_data_{year}/'
                      + f'{function_name}/')
             print('Folder to save data created')
 
@@ -70,14 +70,14 @@ def taq_save_data(function_name, data, ticker_i, ticker_j, year, month, day):
     # Cross-response data
     if (ticker_i != ticker_j):
 
-        pickle.dump(data, open(f'../../taq_data/responses_physical_data_{year}'
+        pickle.dump(data, open(f'../../taq_data/extract_data_{year}'
                     + f'/{function_name}/{function_name}_{year}{month}{day}'
                     + f'_{ticker_i}i_{ticker_j}j.pickle', 'wb'))
 
     # Self-response data
     else:
 
-        pickle.dump(data, open(f'../../taq_data/responses_physical_data_{year}'
+        pickle.dump(data, open(f'../../taq_data/extract_data_{year}'
                     + f'/{function_name}/{function_name}_{year}{month}{day}'
                     + f'_{ticker_i}.pickle', 'wb'))
 
@@ -131,9 +131,8 @@ def taq_start_folders(year):
 
     try:
         os.mkdir('../../taq_plot/')
-        os.mkdir(f'../../taq_plot/responses_physical_plot_{year}')
         os.mkdir('../../taq_data/')
-        os.mkdir(f'../../taq_data/responses_physical_data_{year}')
+        os.mkdir(f'../../taq_data/extract_data_{year}')
         os.mkdir(f'../../taq_data/original_year_data_{year}')
 
         print('Folder to save data created')
@@ -173,17 +172,17 @@ def taq_initial_data():
     """
 
     print()
-    print('#########################################')
-    print('Response Functions Physical Time Analysis')
-    print('#########################################')
+    print('###################')
+    print('TAQ Data Extraction')
+    print('###################')
     print('AG Guhr')
     print('Faculty of Physics')
     print('University of Duisburg-Essen')
     print('Author: Juan Camilo Henao Londono')
     print('More information in:')
     print('  * https://juanhenao21.github.io/')
-    print('  * https://github.com/juanhenao21/response_functions_year')
-    print('  * https://response-functions-year.readthedocs.io/en/latest/')
+    print('  * https://github.com/juanhenao21/spread_impact_analysis')
+    print('  * https://spread-impact-analysis.readthedocs.io/en/latest/')
     print()
 
     print('How many tickers do you want to analyze?')
