@@ -4,8 +4,6 @@ The functions in the module extract the data from binary format to CSV files.
 
 
 This script requires the following modules:
-    * itertools.product
-    * multiprocessing
     * numpy
     * os
     * pandas
@@ -28,8 +26,6 @@ The module contains the following functions:
 # ----------------------------------------------------------------------------
 # Modules
 
-from itertools import product as iprod
-import multiprocessing as mp
 import numpy as np
 import os
 import pandas as pd
