@@ -71,11 +71,19 @@ def main():
     """
 
     # Tickers and days to analyze
-    year, tickers = taq_data_tools_extract.taq_initial_data()
+    # year, tickers = taq_data_tools_extract.taq_initial_data()
     # To be used when run in server
-    # year = '2008'
-    # tickers = ['AAPL', 'MSFT', 'GS', 'JPM', 'CVX', 'XOM',
-    #            'GOOG', 'MA', 'CME', 'RIG', 'APA']
+    year = '2008'
+    tickers = ['MSFT', 'AAPL', 'AMZN', 'GOOG', 'JPM', 'JNJ', 'V', 'PG', 'T',
+               'MA',
+               'MU', 'BIIB', 'BLK', 'PNC', 'AMD', 'MS', 'MMC', 'CSX', 'TGT',
+               'AMAT',
+               'EQR', 'F', 'MCK', 'PEG', 'VLO', 'PAYX', 'BLL', 'A', 'FE',
+               'PPG',
+               'KEY', 'CAH', 'K', 'DOV', 'CINF', 'OMC', 'HES', 'AKAM', 'FCX',
+               'IP',
+               'ETFC', 'AVY', 'WYNN', 'WU', 'HAS', 'PKI', 'TAP', 'APA', 'TXT',
+               'CHRW']
 
     # Basic folders
     taq_data_tools_extract.taq_start_folders(year)
