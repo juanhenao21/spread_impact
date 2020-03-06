@@ -41,6 +41,7 @@ import taq_data_tools_extract
 
 # -----------------------------------------------------------------------------
 
+
 def taq_build_from_scratch(tickers, year):
     """ Extracts data to year CSV files.
 
@@ -207,7 +208,6 @@ def taq_data_extract(ticker, type, year):
         return None
 
 # ----------------------------------------------------------------------------
-
 
 
 def taq_daily_data_extract(tickers, year):
