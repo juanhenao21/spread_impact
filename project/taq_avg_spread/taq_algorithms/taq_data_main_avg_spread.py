@@ -7,9 +7,9 @@ This script requires the following modules:
     * multiprocessing
     * pandas
     * pickle
-    * taq_data_analysis_statistics
-    * taq_data_plot_statistics
-    * taq_data_tools_statistics
+    * taq_data_analysis_avg_spread
+    * taq_data_plot_avg_spread
+    * taq_data_tools_avg_spread
 
 The module contains the following functions:
     * taq_data_generator - generates all the analysis of the TAQ data.
@@ -25,9 +25,9 @@ from itertools import product as iprod
 import multiprocessing as mp
 import pandas as pd
 
-import taq_data_analysis_statistics
-# import taq_data_plot_statistics
-import taq_data_tools_statistics
+import taq_data_analysis_avg_spread
+# import taq_data_plot_avg_spread
+import taq_data_tools_avg_spread
 
 # -----------------------------------------------------------------------------
 
@@ -43,11 +43,8 @@ def taq_data_generator(tickers, year):
     """
 
     # Statistics of the quotes and trades
-    taq_data_analysis_statistics \
-        .taq_quotes_trades_year_statistics_data(tickers, year)
-    # Statistics midpoint
-    taq_data_analysis_statistics \
-        .taq_midpoint_year_statistics_data(tickers, year)
+    taq_data_analysis_avg_spread \
+        .taq_quotes_trades_year_avg_spread_data(tickers, year)
 
     return None
 
@@ -63,13 +60,23 @@ def main():
     """
 
     # Tickers and days to analyze
-    # year, tickers = taq_data_tools_statistics.taq_initial_data()
+    # year, tickers = taq_data_tools_avg_spread.taq_initial_data()
+    # To be used when run in server
     year = '2008'
-    tickers = ['AAPL', 'MSFT', 'GS', 'JPM', 'CVX', 'XOM',
-               'GOOG', 'MA', 'CME', 'RIG', 'APA']
+    tickers = ['MSFT', 'AAPL', 'AMZN', 'GOOG', 'JPM', 'JNJ', 'V', 'PG', 'T',
+               'MA',
+               'MU', 'BIIB', 'BLK', 'PNC', 'AMD', 'MS', 'MMC', 'CSX', 'TGT',
+               'AMAT',
+               'EQR', 'F', 'MCK', 'PEG', 'VLO', 'PAYX', 'BLL', 'A', 'FE',
+               'PPG',
+               'KEY', 'CAH', 'K', 'DOV', 'CINF', 'OMC', 'HES', 'AKAM', 'FCX',
+               'IP',
+               'ETFC', 'AVY', 'WYNN', 'WU', 'HAS', 'PKI', 'TAP', 'APA', 'TXT',
+               'CHRW']
+
 
     # Basic folders
-    # taq_data_tools_statistics.taq_start_folders(year)
+    # taq_data_tools_avg_spread.taq_start_folders(year)
 
     # Run analysis
     # Analysis and plot

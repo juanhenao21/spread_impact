@@ -38,7 +38,7 @@ def taq_save_data(function_name, data, ticker_i, ticker_j, year, month, day):
     """ Saves computed data in pickle files.
 
     Saves the data generated in the functions of the
-    taq_data_analysis_statistics module in pickle files.
+    taq_data_analysis_avg_spread module in pickle files.
 
     :param function_name: name of the function that generates the data.
     :param data: data to be saved. The data can be of different types.
@@ -55,11 +55,11 @@ def taq_save_data(function_name, data, ticker_i, ticker_j, year, month, day):
 
     # Saving data
 
-    if (not os.path.isdir(f'../../taq_data/statistics_data_{year}/'
+    if (not os.path.isdir(f'../../taq_data/avg_spread_data_{year}/'
                           + f'{function_name}/')):
 
         try:
-            os.mkdir(f'../../taq_data/statistics_data_{year}/'
+            os.mkdir(f'../../taq_data/avg_spread_data_{year}/'
                      + f'{function_name}/')
             print('Folder to save data created')
 
@@ -69,14 +69,14 @@ def taq_save_data(function_name, data, ticker_i, ticker_j, year, month, day):
     # Cross-response data
     if (ticker_i != ticker_j):
 
-        pickle.dump(data, open(f'../../taq_data/statistics_data_{year}'
+        pickle.dump(data, open(f'../../taq_data/avg_spread_data_{year}'
                     + f'/{function_name}/{function_name}_{year}{month}{day}'
                     + f'_{ticker_i}i_{ticker_j}j.pickle', 'wb'))
 
     # Self-response data
     else:
 
-        pickle.dump(data, open(f'../../taq_data/statistics_data_{year}'
+        pickle.dump(data, open(f'../../taq_data/avg_spread_data_{year}'
                     + f'/{function_name}/{function_name}_{year}{month}{year}'
                     + f'_{ticker_i}.pickle', 'wb'))
 
@@ -129,7 +129,7 @@ def taq_start_folders(year):
     """
 
     try:
-        os.mkdir(f'../../taq_data/statistics_data_{year}')
+        os.mkdir(f'../../taq_data/avg_spread_data_{year}')
         print('Folder to save data created')
 
     except FileExistsError as e:
@@ -150,9 +150,9 @@ def taq_initial_data():
     """
 
     print()
-    print('##########')
-    print('Statistics')
-    print('##########')
+    print('##############')
+    print('Average Spread')
+    print('##############')
     print('AG Guhr')
     print('Faculty of Physics')
     print('University of Duisburg-Essen')
@@ -162,15 +162,16 @@ def taq_initial_data():
     print('  * https://github.com/juanhenao21/response_functions_year')
     print()
 
-    tickers = ['AAPL', 'MSFT', 'GS', 'JPM', 'XOM', 'CVX']
+    print('How many tickers do you want to analyze?')
+    n_tick = int(input())
+    tickers = []
 
-    for ticker in tickers[:]:
+    for _ in range(n_tick):
 
-        print(f'Do you want to use the {ticker} ticker? (yes/no)')
+        print(f'Insert the symbol of the ticker (i.e. GOOG):')
         res = input()
 
-        if (res == 'no'):
-            tickers.remove(ticker)
+        tickers.append(res)
 
     print()
     print('Please enter the year to be analyzed (i.e. 2008): ')
