@@ -250,8 +250,8 @@ def taq_initial_data():
     print('Author: Juan Camilo Henao Londono')
     print('More information in:')
     print('  * https://juanhenao21.github.io/')
-    print('  * https://github.com/juanhenao21/response_functions_year')
-    print('  * https://response-functions-year.readthedocs.io/en/latest/')
+    print('  * https://github.com/juanhenao21/spread_impact_analysis')
+    print('  * https://spread-impact-analysis.readthedocs.io/en/latest/')
     print()
 
     print('How many tickers do you want to analyze?')
