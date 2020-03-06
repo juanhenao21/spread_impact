@@ -99,7 +99,7 @@ def main():
     """
 
     # Tickers and days to analyze
-    year, tickers = taq_data_tools_responses_physical.taq_initial_data()
+    # year, tickers = taq_data_tools_responses_physical.taq_initial_data()
     # To be used when run in server
     year = '2008'
     tickers = ['MSFT', 'AAPL', 'AMZN', 'GOOG', 'JPM', 'JNJ', 'V', 'PG', 'T',
