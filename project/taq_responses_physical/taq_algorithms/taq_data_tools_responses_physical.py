@@ -10,7 +10,6 @@ This script requires the following modules:
     * os
     * pandas
     * pickle
-    * subprocess
 
 The module contains the following functions:
     * taq_save_data - saves computed data.
@@ -20,7 +19,6 @@ The module contains the following functions:
     * taq_start_folders - creates folders to save data and plots.
     * taq_initial_data - takes the initial values for the analysis.
     * taq_business_days - creates a list of week days for a year.
-    * taq_decompress - decompress original data format to CSV file.
     * main - the main function of the script.
 
 .. moduleauthor:: Juan Camilo Henao Londono <www.github.com/juanhenao21>
@@ -34,7 +32,6 @@ import numpy as np
 import os
 import pandas as pd
 import pickle
-import subprocess
 
 # -----------------------------------------------------------------------------
 
@@ -220,30 +217,11 @@ def taq_start_folders(year):
     """
 
     try:
-        os.mkdir('../../taq_plot/')
         os.mkdir(f'../../taq_plot/responses_physical_plot_{year}')
-        os.mkdir('../../taq_data/')
         os.mkdir(f'../../taq_data/responses_physical_data_{year}')
-        os.mkdir(f'../../taq_data/original_year_data_{year}')
 
         print('Folder to save data created')
         print()
-
-        res = 'no'
-        while (res == 'no'):
-            print('Please move the .quotes and .trades files to the '
-                  + 'original_year_data_2008 folder and move the '
-                  + 'decompress_original_data_2008 folder to the taq_data '
-                  + 'folder ...')
-            print()
-            print('Or')
-            print()
-            print(f'Move the CSV year data files to the '
-                  + f'csv_year_data_{year} folder')
-            print()
-            print('Are you ready to continue? (yes/no): ')
-            res = input()
-            print()
 
     except FileExistsError as e:
         print('Folder exists. The folder was not created')
@@ -313,31 +291,6 @@ def taq_bussiness_days(year):
     date_list = dt_df[0].astype(str).tolist()
 
     return date_list
-
-# -----------------------------------------------------------------------------
-
-
-def taq_decompress(ticker, year, type):
-    """Decompress original data format to CSV file.
-
-    :param ticker: string of the abbreviation of the stock to be analyzed
-     (i.e. 'AAPL').
-    :param year: string of the year to be analyzed (i.e '2008').
-    :param type: string with the word 'quotes' or 'trades'.
-    :return: None -- The function run a code and does not return a value.
-    """
-
-    if (type == 'quotes'):
-        subprocess.call(f'./decompress.out {ticker}_{year}_NASDAQ.quotes'
-                        + f' > {ticker}_{year}_NASDAQ_quotes.csv',
-                        shell=True, stdout=subprocess.PIPE)
-
-    elif (type == 'trades'):
-        subprocess.call(f'./decompress.out {ticker}_{year}_NASDAQ.trades'
-                        + f' > {ticker}_{year}_NASDAQ_trades.csv',
-                        shell=True, stdout=subprocess.PIPE)
-
-    return None
 
 # -----------------------------------------------------------------------------
 
