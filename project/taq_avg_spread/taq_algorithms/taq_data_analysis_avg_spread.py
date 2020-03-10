@@ -130,7 +130,7 @@ def taq_quotes_trades_year_avg_spread_data(tickers, year):
         spread_stats.loc[idx] = [ticker] + list(stat_year)
 
     spread_stats.sort_values(by='Avg_Spread', inplace=True)
-    spread_stats.to_csv('../taq_avg_spread.csv')
+    spread_stats.to_csv(f'../taq_avg_spread_{year}.csv')
     print(spread_stats)
 
     return None
