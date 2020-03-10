@@ -40,7 +40,7 @@ def taq_save_data(function_name, data, ticker_i, ticker_j, year, month, day):
     """ Saves computed data in pickle files.
 
     Saves the data generated in the functions of the
-    taq_data_analysis_responses_physical module in pickle files.
+    taq_data_analysis_avg_responses_physical module in pickle files.
 
     :param function_name: name of the function that generates the data.
     :param data: data to be saved. The data can be of different types.
@@ -57,11 +57,11 @@ def taq_save_data(function_name, data, ticker_i, ticker_j, year, month, day):
 
     # Saving data
 
-    if (not os.path.isdir(f'../../taq_data/responses_physical_data_{year}/'
+    if (not os.path.isdir(f'../../taq_data/avg_responses_physical_data_{year}/'
                           + f'{function_name}/')):
 
         try:
-            os.mkdir(f'../../taq_data/responses_physical_data_{year}/'
+            os.mkdir(f'../../taq_data/avg_responses_physical_data_{year}/'
                      + f'{function_name}/')
             print('Folder to save data created')
 
@@ -71,16 +71,16 @@ def taq_save_data(function_name, data, ticker_i, ticker_j, year, month, day):
     # Cross-response data
     if (ticker_i != ticker_j):
 
-        pickle.dump(data, open(f'../../taq_data/responses_physical_data_{year}'
-                    + f'/{function_name}/{function_name}_{year}{month}{day}'
-                    + f'_{ticker_i}i_{ticker_j}j.pickle', 'wb'))
+        pickle.dump(data, open(f'../../taq_data/avg_responses_physical_data'
+                    + f'_{year}/{function_name}/{function_name}_{year}{month}'
+                    + f'{day}_{ticker_i}i_{ticker_j}j.pickle', 'wb'))
 
     # Self-response data
     else:
 
-        pickle.dump(data, open(f'../../taq_data/responses_physical_data_{year}'
-                    + f'/{function_name}/{function_name}_{year}{month}{day}'
-                    + f'_{ticker_i}.pickle', 'wb'))
+        pickle.dump(data, open(f'../../taq_data/avg_responses_physical_data'
+                    + f'_{year}/{function_name}/{function_name}_{year}{month}'
+                    + f'{day}_{ticker_i}.pickle', 'wb'))
 
     print('Data Saved')
     print()
@@ -94,7 +94,7 @@ def taq_save_plot(function_name, figure, ticker_i, ticker_j, year, month):
     """Saves plot in png files.
 
     Saves the plot generated in the functions of the
-    taq_data_plot_responses_physical module in png files.
+    taq_data_plot_avg_responses_physical module in png files.
 
     :param function_name: name of the function that generates the plot.
     :param figure: figure object that is going to be save.
@@ -110,11 +110,11 @@ def taq_save_plot(function_name, figure, ticker_i, ticker_j, year, month):
 
     # Saving plot data
 
-    if (not os.path.isdir(f'../../taq_plot/responses_physical_plot_{year}'
+    if (not os.path.isdir(f'../../taq_plot/avg_responses_physical_plot_{year}'
                           + f'/{function_name}/')):
 
         try:
-            os.mkdir(f'../../taq_plot/responses_physical_plot_{year}/'
+            os.mkdir(f'../../taq_plot/avg_responses_physical_plot_{year}/'
                      + f'{function_name}/')
             print('Folder to save data created')
 
@@ -124,14 +124,14 @@ def taq_save_plot(function_name, figure, ticker_i, ticker_j, year, month):
     # Cross-response data
     if (ticker_i != ticker_j):
 
-        figure.savefig(f'../../taq_plot/responses_physical_plot_{year}/'
+        figure.savefig(f'../../taq_plot/avg_responses_physical_plot_{year}/'
                        + f'{function_name}/{function_name}_{year}{month}'
                        + f'_{ticker_i}i_{ticker_j}j.png')
 
     # Self-response
     else:
 
-        figure.savefig(f'../../taq_plot/responses_physical_plot_{year}/'
+        figure.savefig(f'../../taq_plot/avg_responses_physical_plot_{year}/'
                        + f'{function_name}/{function_name}_{year}{month}'
                        + f'_{ticker_i}.png')
 
@@ -217,8 +217,8 @@ def taq_start_folders(year):
     """
 
     try:
-        os.mkdir(f'../../taq_plot/responses_physical_plot_{year}')
-        os.mkdir(f'../../taq_data/responses_physical_data_{year}')
+        os.mkdir(f'../../taq_plot/avg_responses_physical_plot_{year}')
+        os.mkdir(f'../../taq_data/avg_responses_physical_data_{year}')
 
         print('Folder to save data created')
         print()
@@ -236,14 +236,14 @@ def taq_start_folders(year):
 def taq_initial_data():
     """Takes the initial values for the analysis
 
-    :return: Tuple -- The function return a tuple with a string with the year
-     to be analyzed and a list with the name of the tickers.
+    :return: None -- The function prints the message and does not return a
+     value.
     """
 
     print()
-    print('#########################################')
-    print('Response Functions Physical Time Analysis')
-    print('#########################################')
+    print('#################################################')
+    print('Average Response Functions Physical Time Analysis')
+    print('#################################################')
     print('AG Guhr')
     print('Faculty of Physics')
     print('University of Duisburg-Essen')
@@ -254,23 +254,7 @@ def taq_initial_data():
     print('  * https://spread-impact-analysis.readthedocs.io/en/latest/')
     print()
 
-    print('How many tickers do you want to analyze?')
-    n_tick = int(input())
-    tickers = []
-
-    for _ in range(n_tick):
-
-        print(f'Insert the symbol of the ticker (i.e. GOOG):')
-        res = input()
-
-        tickers.append(res)
-
-    print()
-    print('Please enter the year to be analyzed (i.e. 2008): ')
-    year = input()
-    print()
-
-    return (year, tickers)
+    return None
 
 # -----------------------------------------------------------------------------
 
