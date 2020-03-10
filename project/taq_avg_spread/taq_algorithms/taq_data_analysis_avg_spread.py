@@ -132,13 +132,6 @@ def taq_quotes_trades_year_avg_spread_data(tickers, year):
     spread_stats.sort_values(by='Avg_Spread', inplace=True)
     spread_stats.to_csv('../taq_avg_spread.csv')
     print(spread_stats)
-    # file = open('../taq_quotes_trades_year_avg_spread_data.csv', 'a+')
-    # file.write('Ticker, avg_quotes, avg_trades, avg_spread\n')
-    #     # Write data in file
-    #     file.write(f'{ticker}, {stat_year[0]:.0f}, {stat_year[1]:.0f},'
-    #             + f' {stat_year[2]:.2f}\n')
-
-    # file.close
 
     return None
 
