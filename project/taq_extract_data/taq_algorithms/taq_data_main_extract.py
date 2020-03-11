@@ -50,9 +50,9 @@ def taq_data_plot_generator(tickers, year):
     with mp.Pool(processes=mp.cpu_count()) as pool:
 
         # Basic functions
-        # pool.starmap(taq_data_analysis_extract
-        #              .taq_midpoint_physical_data,
-        #              iprod(tickers, date_list))
+        pool.starmap(taq_data_analysis_extract
+                     .taq_midpoint_physical_data,
+                     iprod(tickers, date_list))
         pool.starmap(taq_data_analysis_extract
                      .taq_trade_signs_physical_data,
                      iprod(tickers, date_list))
@@ -74,25 +74,16 @@ def main():
     # year, tickers = taq_data_tools_extract.taq_initial_data()
     # To be used when run in server
     year = '2008'
-    tickers = ['MSFT', 'AAPL', 'AMZN', 'GOOG', 'JPM', 'JNJ', 'V', 'PG', 'T',
-               'MA',
-               'MU', 'BIIB', 'BLK', 'PNC', 'AMD', 'MS', 'MMC', 'CSX', 'TGT',
-               'AMAT',
-               'EQR', 'F', 'MCK', 'PEG', 'VLO', 'PAYX', 'BLL', 'A', 'FE',
-               'PPG',
-               'KEY', 'CAH', 'K', 'DOV', 'CINF', 'OMC', 'HES', 'AKAM', 'FCX',
-               'IP',
-               'ETFC', 'AVY', 'WYNN', 'WU', 'HAS', 'PKI', 'TAP', 'APA', 'TXT',
-               'CHRW']
+    tickers = taq_data_analysis_extract.taq_get_tickers_data(year)
 
     # Basic folders
     taq_data_tools_extract.taq_start_folders(year)
 
     # Run analysis
     # Use the following function if you have all the C++ modules
-    # taq_data_analysis_extract.taq_build_from_scratch(tickers, year)
+    taq_data_analysis_extract.taq_build_from_scratch(tickers, year)
     # Use this function if you have the year csv files of the stocks
-    # taq_data_analysis_extract.taq_daily_data_extract(tickers, year)
+    taq_data_analysis_extract.taq_daily_data_extract(tickers, year)
 
     # Analysis and plot
     taq_data_plot_generator(tickers, year)
