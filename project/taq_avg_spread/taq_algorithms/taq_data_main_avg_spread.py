@@ -60,23 +60,13 @@ def main():
     """
 
     # Tickers and days to analyze
-    # year, tickers = taq_data_tools_avg_spread.taq_initial_data()
+    # year = taq_data_tools_avg_spread.taq_initial_data()
     # To be used when run in server
     year = '2008'
-    tickers = ['MSFT', 'AAPL', 'AMZN', 'GOOG', 'JPM', 'JNJ', 'V', 'PG', 'T',
-               'MA',
-               'MU', 'BIIB', 'BLK', 'PNC', 'AMD', 'MS', 'MMC', 'CSX', 'TGT',
-               'AMAT',
-               'EQR', 'F', 'MCK', 'PEG', 'VLO', 'PAYX', 'BLL', 'A', 'FE',
-               'PPG',
-               'KEY', 'CAH', 'K', 'DOV', 'CINF', 'OMC', 'HES', 'AKAM', 'FCX',
-               'IP',
-               'ETFC', 'AVY', 'WYNN', 'WU', 'HAS', 'PKI', 'TAP', 'APA', 'TXT',
-               'CHRW']
-
+    tickers = taq_data_tools_avg_spread.taq_get_tickers_data(year)
 
     # Basic folders
-    # taq_data_tools_avg_spread.taq_start_folders(year)
+    taq_data_tools_avg_spread.taq_start_folders(year)
 
     # Run analysis
     # Analysis and plot
