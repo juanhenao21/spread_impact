@@ -77,7 +77,7 @@ def main():
     """
 
     year = '2008'
-    div = 3
+    div = 5
 
     # Basic folders
     taq_data_tools_avg_responses_physical.taq_start_folders(year)
