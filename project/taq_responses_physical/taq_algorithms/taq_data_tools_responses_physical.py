@@ -19,6 +19,7 @@ The module contains the following functions:
     * taq_start_folders - creates folders to save data and plots.
     * taq_initial_data - takes the initial values for the analysis.
     * taq_business_days - creates a list of week days for a year.
+    * taq_get_tickers_data - gets the available ticker names.
     * main - the main function of the script.
 
 .. moduleauthor:: Juan Camilo Henao Londono <www.github.com/juanhenao21>
@@ -236,8 +237,8 @@ def taq_start_folders(year):
 def taq_initial_data():
     """Takes the initial values for the analysis
 
-    :return: Tuple -- The function return a tuple with a string with the year
-     to be analyzed and a list with the name of the tickers.
+    :return: String -- The function returns a string with the year to be
+     analyzed.
     """
 
     print()
@@ -254,23 +255,11 @@ def taq_initial_data():
     print('  * https://spread-impact-analysis.readthedocs.io/en/latest/')
     print()
 
-    print('How many tickers do you want to analyze?')
-    n_tick = int(input())
-    tickers = []
-
-    for _ in range(n_tick):
-
-        print(f'Insert the symbol of the ticker (i.e. GOOG):')
-        res = input()
-
-        tickers.append(res)
-
-    print()
     print('Please enter the year to be analyzed (i.e. 2008): ')
     year = input()
     print()
 
-    return (year, tickers)
+    return year
 
 # -----------------------------------------------------------------------------
 
@@ -291,6 +280,33 @@ def taq_bussiness_days(year):
     date_list = dt_df[0].astype(str).tolist()
 
     return date_list
+
+# ----------------------------------------------------------------------------
+
+
+def taq_get_tickers_data(year):
+    """Gets the available ticker names.
+
+    :param year: string of the year to be analyzed (i.e '2016').
+    :return: list -- The function returns a list with the name of the tickers.
+    """
+
+    # Obtain the absolute path of the current file and split it
+    abs_path = os.path.abspath(__file__).split('/')
+    # Take the path from the start to the project folder
+    root_path = '/'.join(abs_path[:abs_path.index('project') + 1])
+    f_path = root_path + f'/taq_data/original_year_data_{year}'
+    files = os.listdir(f_path)
+
+    tickers = []
+
+    # Get the ticker symbols
+    for file in files:
+        tickers.append(file.split('_')[0])
+
+    tickers = list(set(tickers))
+
+    return tickers
 
 # -----------------------------------------------------------------------------
 
