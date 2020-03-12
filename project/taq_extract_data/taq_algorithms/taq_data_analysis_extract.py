@@ -21,7 +21,6 @@ The module contains the following functions:
     * taq_midpoint_physical_data - computes the midpoint price of every second.
     * taq_trade_signs_trade_data - computes the trade signs of every trade.
     * taq_trade_signs_physical_data - computes the trade signs of every second.
-    * taq_get_tickers_data - gets the available ticker names.
     * main - the main function of the script.
 
 .. moduleauthor:: Juan Camilo Henao Londono <www.github.com/juanhenao21>
@@ -531,33 +530,6 @@ def taq_trade_signs_physical_data(ticker, date):
 
     except TypeError as e:
         return None
-
-# ----------------------------------------------------------------------------
-
-
-def taq_get_tickers_data(year):
-    """Gets the available ticker names.
-
-    :param year: string of the year to be analyzed (i.e '2016').
-    :return: list -- The function returns a list with the name of the tickers.
-    """
-
-    # Obtain the absolute path of the current file and split it
-    abs_path = os.path.abspath(__file__).split('/')
-    # Take the path from the start to the project folder
-    root_path = '/'.join(abs_path[:abs_path.index('project') + 1])
-    f_path = root_path + f'/taq_data/original_year_data_{year}'
-    files = os.listdir(f_path)
-
-    tickers = []
-
-    # Get the ticker symbols
-    for file in files:
-        tickers.append(file.split('_')[0])
-
-    tickers = list(set(tickers))
-
-    return tickers
 
 # ----------------------------------------------------------------------------
 

@@ -74,7 +74,7 @@ def main():
     # year, tickers = taq_data_tools_extract.taq_initial_data()
     # To be used when run in server
     year = '2008'
-    tickers = taq_data_analysis_extract.taq_get_tickers_data(year)
+    tickers = taq_data_tools_extract.taq_get_tickers_data(year)
 
     # Basic folders
     taq_data_tools_extract.taq_start_folders(year)
