@@ -8,10 +8,7 @@ the `paper
 
 
 This script requires the following modules:
-    * itertools.product
-    * multiprocessing
     * numpy
-    * os
     * pandas
     * pickle
     * taq_data_tools_avg_responses_physical
@@ -19,10 +16,8 @@ This script requires the following modules:
 The module contains the following functions:
     * taq_tickers_spread_data - obtains the tickers and the spread for the
       classification.
-    * taq_self_response_day_avg_responses_physical_data - computes the self
-      response of a day.
-    * taq_self_response_year_avg_responses_physical_data - computes the self
-      response of a year.
+    * taq_self_response_year_avg_responses_physical_data - computes the average
+      self response for groups of tickers in a year.
     * main - the main function of the script.
 
 .. moduleauthor:: Juan Camilo Henao Londono <www.github.com/juanhenao21>
@@ -31,10 +26,7 @@ The module contains the following functions:
 # ----------------------------------------------------------------------------
 # Modules
 
-from itertools import product as iprod
-import multiprocessing as mp
 import numpy as np
-import os
 import pandas as pd
 import pickle
 

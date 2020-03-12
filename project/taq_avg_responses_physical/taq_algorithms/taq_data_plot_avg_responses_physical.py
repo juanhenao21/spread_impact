@@ -45,14 +45,14 @@ def taq_self_response_year_avg_responses_physical_plot(year):
         function_name = taq_self_response_year_avg_responses_physical_plot \
             .__name__
         taq_data_tools_avg_responses_physical \
-            .taq_function_header_print_plot(function_name,'', '', year, '', '')
+            .taq_function_header_print_plot(function_name, '', '', year, '',
+                                            '')
 
         # Load data
         responses = pickle.load(open(
-                        f'../../taq_data/avg_responses_physical_data_{year}/taq'
-                        + f'_self_response_year_avg_responses_physical_data/taq'
-                        + f'_self_response_year_avg_responses_physical_data_{year}'
-                        + f'_.pickle', 'rb'))
+            f'../../taq_data/avg_responses_physical_data_{year}/taq_self'
+            + f'_response_year_avg_responses_physical_data/taq_self_response'
+            + f'_year_avg_responses_physical_data_{year}_.pickle', 'rb'))
 
         figure = plt.figure(figsize=(16, 9))
 

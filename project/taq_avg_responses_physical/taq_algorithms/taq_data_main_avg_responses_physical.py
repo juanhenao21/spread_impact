@@ -50,6 +50,13 @@ def taq_data_plot_generator(div, year):
     tickers = taq_data_analysis_avg_responses_physical \
         .taq_tickers_spread_data(div, year)
 
+    for t_idx, ticker in enumerate(tickers):
+        print(f'GROUP {t_idx + 1}')
+        for t in ticker:
+            print(t)
+        print(f'Number of tickers group {t_idx + 1}: {len(ticker)}')
+        print()
+
     taq_data_analysis_avg_responses_physical \
         .taq_self_response_year_avg_responses_physical_data(tickers, year)
 

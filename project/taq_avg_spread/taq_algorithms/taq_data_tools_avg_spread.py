@@ -146,8 +146,8 @@ def taq_start_folders(year):
 def taq_initial_data():
     """Takes the initial values for the analysis
 
-    :return: Tuple -- The function return a tuple with a string with the year
-     to be analyzed and a list with the name of the tickers.
+    :return: String -- The function returns a string with the year to be
+     analyzed.
     """
 
     print()
@@ -160,26 +160,15 @@ def taq_initial_data():
     print('Author: Juan Camilo Henao Londono')
     print('More information in:')
     print('  * https://juanhenao21.github.io/')
-    print('  * https://github.com/juanhenao21/response_functions_year')
+    print('  * https://github.com/juanhenao21/spread_impact_analysis')
+    print('  * https://spread-impact-analysis.readthedocs.io/en/latest/')
     print()
 
-    print('How many tickers do you want to analyze?')
-    n_tick = int(input())
-    tickers = []
-
-    for _ in range(n_tick):
-
-        print(f'Insert the symbol of the ticker (i.e. GOOG):')
-        res = input()
-
-        tickers.append(res)
-
-    print()
     print('Please enter the year to be analyzed (i.e. 2008): ')
     year = input()
     print()
 
-    return (year, tickers)
+    return year
 
 # -----------------------------------------------------------------------------
 
