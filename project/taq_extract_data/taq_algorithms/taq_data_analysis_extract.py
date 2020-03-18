@@ -225,7 +225,7 @@ def taq_daily_data_extract(tickers, year):
     # Extract daily data
     with mp.Pool(processes=mp.cpu_count()) as pool:
         print('Extracting daily data')
-        pool.starmap(taq_data_extract, iprod(tickers, ['quotes'], [year]))
+        # pool.starmap(taq_data_extract, iprod(tickers, ['quotes'], [year]))
         pool.starmap(taq_data_extract, iprod(tickers, ['trades'], [year]))
 
     return None
