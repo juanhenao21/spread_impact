@@ -136,7 +136,7 @@ def taq_start_folders(year):
     except FileExistsError as e:
         print('Folder exists. The folder was not created')
         print(e)
-        raise Exception('Check the folders')
+        # raise Exception('Check the folders')
 
     return None
 
