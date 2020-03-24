@@ -64,7 +64,8 @@ def main():
     # To be used when run in server
     year = '2008'
     tickers = taq_data_tools_avg_spread.taq_get_tickers_data(year)
-    print(tickers.sort())
+    tickers.sort()
+    print(tickers)
     print(len(tickers))
 
     # Basic folders
