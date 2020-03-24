@@ -65,6 +65,7 @@ def main():
     year = '2008'
     tickers = taq_data_tools_avg_spread.taq_get_tickers_data(year)
     print(tickers)
+    print(len(tickers))
 
     # Basic folders
     taq_data_tools_avg_spread.taq_start_folders(year)
