@@ -57,7 +57,7 @@ def taq_tickers_spread_data(div, year):
             '../../taq_avg_spread/taq_avg_spread_2008.csv',
             usecols=['Ticker', 'Avg_Spread'])
 
-        interval = spread_data['Avg_Spread'].iloc[-4] / 5
+        interval = spread_data['Avg_Spread'].iloc[-10] / 5
         tickers = []
 
         for i in range(div - 1):
