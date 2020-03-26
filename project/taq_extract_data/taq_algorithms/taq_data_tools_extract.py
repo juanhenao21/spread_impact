@@ -252,7 +252,10 @@ def taq_get_tickers_data(year):
     # Using HDF5 files
     # f_path = root_path + f'/taq_data/hdf5_daily_data_{year}'
     # Using original files
-    f_path = root_path + f'/taq_data/original_year_data_{year}'
+    # f_path = root_path + f'/taq_data/original_year_data_{year}'
+    # files = os.listdir(f_path)
+    # Using CSV files
+    f_path = root_path + f'/taq_data/csv_year_data_{year}'
     files = os.listdir(f_path)
 
     tickers = []
@@ -262,6 +265,8 @@ def taq_get_tickers_data(year):
         # Using HDF5 files
         # tickers.append(file.split('_')[1])
         # Using original files
+        # tickers.append(file.split('_')[0])
+        # Using CSV files
         tickers.append(file.split('_')[0])
 
     tickers = list(set(tickers))
