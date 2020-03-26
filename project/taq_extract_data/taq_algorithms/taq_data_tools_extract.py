@@ -249,7 +249,9 @@ def taq_get_tickers_data(year):
     abs_path = os.path.abspath(__file__).split('/')
     # Take the path from the start to the project folder
     root_path = '/'.join(abs_path[:abs_path.index('project') + 1])
+    # Using HDF5 files
     # f_path = root_path + f'/taq_data/hdf5_daily_data_{year}'
+    # Using original files
     f_path = root_path + f'/taq_data/original_year_data_{year}'
     files = os.listdir(f_path)
 
@@ -257,7 +259,10 @@ def taq_get_tickers_data(year):
 
     # Get the ticker symbols
     for file in files:
-        tickers.append(file.split('_')[1])
+        # Using HDF5 files
+        # tickers.append(file.split('_')[1])
+        # Using original files
+        tickers.append(file.split('_')[0])
 
     tickers = list(set(tickers))
 
