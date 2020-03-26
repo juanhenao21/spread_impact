@@ -229,8 +229,8 @@ def taq_daily_data_extract(tickers, year):
     with mp.Pool(processes=mp.cpu_count()) as pool:
         pool.starmap(taq_data_extract, iprod(tickers, ['quotes'], [year]))
     # Parallel computing
-    with mp.Pool(processes=mp.cpu_count()) as pool:
-        pool.starmap(taq_data_extract, iprod(tickers, ['trades'], [year]))
+    # with mp.Pool(processes=mp.cpu_count()) as pool:
+    #     pool.starmap(taq_data_extract, iprod(tickers, ['trades'], [year]))
 
     return None
 
