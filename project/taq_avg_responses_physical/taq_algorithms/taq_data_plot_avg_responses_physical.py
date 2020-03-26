@@ -49,15 +49,16 @@ def taq_self_response_year_avg_responses_physical_plot(year):
                                             '')
 
         # Load data
-        responses = pickle.load(open(
+        resp_g1, resp_g2, resp_g3 = pickle.load(open(
             f'../../taq_data/avg_responses_physical_data_{year}/taq_self'
             + f'_response_year_avg_responses_physical_data/taq_self_response'
             + f'_year_avg_responses_physical_data_{year}_.pickle', 'rb'))
 
         figure = plt.figure(figsize=(16, 9))
 
-        for r_idx, r_val in enumerate(responses):
-            plt.semilogx(r_val, linewidth=5, label=f'Group {r_idx + 1}')
+        plt.semilogx(resp_g1, linewidth=5, label=f'Group 1')
+        plt.semilogx(resp_g2, linewidth=5, label=f'Group 2')
+        plt.semilogx(resp_g3, linewidth=5, label=f'Group 3')
 
         plt.legend(loc='best', fontsize=25)
         plt.title('Self-response', fontsize=40)
