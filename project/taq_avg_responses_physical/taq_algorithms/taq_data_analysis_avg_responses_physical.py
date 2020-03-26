@@ -37,7 +37,7 @@ __tau__ = 10000
 # ----------------------------------------------------------------------------
 
 
-def taq_tickers_spread_data(div, year):
+def taq_tickers_spread_data(year):
     """Obtains the tickers and the spread range for the classification.
 
     :param div: integer of the number of divisions in the tickers (i.e. 5).
@@ -48,8 +48,7 @@ def taq_tickers_spread_data(div, year):
 
     function_name = taq_tickers_spread_data.__name__
     taq_data_tools_avg_responses_physical \
-        .taq_function_header_print_data(function_name, '', '', year,
-                                        '', '')
+        .taq_function_header_print_data(function_name, '', '', year, '', '')
 
     try:
         # load data
@@ -57,16 +56,19 @@ def taq_tickers_spread_data(div, year):
             '../../taq_avg_spread/taq_avg_spread_2008.csv',
             usecols=['Ticker', 'Avg_Spread'])
 
-        interval = spread_data['Avg_Spread'].iloc[-10] / 5
         tickers = []
 
-        for i in range(div - 1):
-            cond_1 = (spread_data['Avg_Spread'] >= i * interval) \
-                & (spread_data['Avg_Spread'] < (i + 1) * interval)
-            tickers.append(list(spread_data['Ticker'][cond_1]))
+        g1 = spread_data[spread_data['Avg_Spread'] < 0.1]
+        tickers_g1 = g1['Ticker'].tolist()
+        g2 = spread_data[(spread_data['Avg_Spread'] <= 0.1)
+                         & spread_data['Avg_Spread'] < 0.2]
+        tickers_g2 = g2['Ticker'].tolist()
+        g3 = spread_data[spread_data['Avg_Spread'] >= 0.2]
+        tickers_g3 = g3['Ticker'].tolist()
 
-        cond_2 = spread_data['Avg_Spread'] > (div - 1) * interval
-        tickers.append(list(spread_data['Ticker'][cond_2]))
+        tickers.append(tickers_g1)
+        tickers.append(tickers_g2)
+        tickers.append(tickers_g3)
 
         return tickers
 
