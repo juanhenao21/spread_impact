@@ -129,9 +129,7 @@ def main():
     :return: None.
     """
 
-    tickers = taq_tickers_spread_data(5, '2008')
-    x = taq_self_response_year_avg_responses_physical_data(tickers, '2008')
-    print(len(x))
+    pass
 
     return None
 

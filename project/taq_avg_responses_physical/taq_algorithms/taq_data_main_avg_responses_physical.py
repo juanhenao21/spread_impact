@@ -9,7 +9,6 @@ This script requires the following modules:
     * os
     * pandas
     * pickle
-    * subprocess
     * taq_data_analysis_avg_responses_physical
     * taq_data_plot_avg_responses_physical
     * taq_data_tools_avg_responses_physical
