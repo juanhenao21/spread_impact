@@ -47,7 +47,7 @@ def taq_data_plot_generator(div, year):
     """
 
     tickers = taq_data_analysis_avg_responses_physical \
-        .taq_tickers_spread_data(div, year)
+        .taq_tickers_spread_data(year)
 
     for t_idx, ticker in enumerate(tickers):
         print(f'GROUP {t_idx + 1}')
