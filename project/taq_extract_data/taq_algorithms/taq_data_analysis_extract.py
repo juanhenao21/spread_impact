@@ -86,13 +86,14 @@ def taq_build_from_scratch(tickers, year):
         os.system(f'mv decompress.out ../original_year_data_{year}/')
         os.chdir(f'../original_year_data_{year}')
 
+        print('Extracting quotes')
         # Parallel computing
-        # with mp.Pool(processes=mp.cpu_count()) as pool:
-        #     print('Extracting quotes')
-        #     pool.starmap(taq_data_tools_extract.taq_decompress,
-        #                  iprod(tickers_rm, [year], ['quotes']))
         with mp.Pool(processes=mp.cpu_count()) as pool:
-            print('Extracting trades')
+            pool.starmap(taq_data_tools_extract.taq_decompress,
+                         iprod(tickers_rm, [year], ['quotes']))
+        print('Extracting trades')
+        # Parallel computing
+        with mp.Pool(processes=mp.cpu_count()) as pool:
             pool.starmap(taq_data_tools_extract.taq_decompress,
                          iprod(tickers_rm, [year], ['trades']))
 
@@ -223,9 +224,12 @@ def taq_daily_data_extract(tickers, year):
     """
 
     # Extract daily data
+    print('Extracting daily data')
+    # Parallel computing
     with mp.Pool(processes=mp.cpu_count()) as pool:
-        print('Extracting daily data')
-        # pool.starmap(taq_data_extract, iprod(tickers, ['quotes'], [year]))
+        pool.starmap(taq_data_extract, iprod(tickers, ['quotes'], [year]))
+    # Parallel computing
+    with mp.Pool(processes=mp.cpu_count()) as pool:
         pool.starmap(taq_data_extract, iprod(tickers, ['trades'], [year]))
 
     return None

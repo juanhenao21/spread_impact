@@ -9,14 +9,11 @@ This script requires the following modules:
     * os
     * pandas
     * pickle
-    * subprocess
     * taq_data_analysis_responses_physical
     * taq_data_plot_responses_physical
     * taq_data_tools_responses_physical
 
 The module contains the following functions:
-    * taq_build_from_scratch - extract data to daily CSV files.
-    * taq_daily_data_extract - parallelize the taq_data_extract function.
     * taq_data_plot_generator - generates all the analysis and plots from the
       TAQ data.
     * main - the main function of the script.
@@ -76,11 +73,13 @@ def taq_data_plot_generator(tickers, year):
 
     # Parallel computing
     with mp.Pool(processes=mp.cpu_count()) as pool:
-
         # Plot
         pool.starmap(taq_data_plot_responses_physical
                      .taq_self_response_year_avg_responses_physical_plot,
                      iprod(tickers, [year]))
+    # Parallel computing
+    # with mp.Pool(processes=mp.cpu_count()) as pool:
+        # Plot
         # pool.starmap(taq_data_plot_responses_physical
         #              .taq_cross_response_year_avg_responses_physical_plot,
         #              iprod(tickers, tickers, [year]))

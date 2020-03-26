@@ -48,11 +48,13 @@ def taq_data_plot_generator(tickers, year):
 
     # Parallel computing
     with mp.Pool(processes=mp.cpu_count()) as pool:
-
         # Basic functions
-        # pool.starmap(taq_data_analysis_extract
-        #              .taq_midpoint_physical_data,
-        #              iprod(tickers, date_list))
+        pool.starmap(taq_data_analysis_extract
+                     .taq_midpoint_physical_data,
+                     iprod(tickers, date_list))
+    # Parallel computing
+    with mp.Pool(processes=mp.cpu_count()) as pool:
+        # Basic functions
         pool.starmap(taq_data_analysis_extract
                      .taq_trade_signs_physical_data,
                      iprod(tickers, date_list))
