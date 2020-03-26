@@ -249,7 +249,8 @@ def taq_get_tickers_data(year):
     abs_path = os.path.abspath(__file__).split('/')
     # Take the path from the start to the project folder
     root_path = '/'.join(abs_path[:abs_path.index('project') + 1])
-    f_path = root_path + f'/taq_data/hdf5_daily_data_{year}'
+    # f_path = root_path + f'/taq_data/hdf5_daily_data_{year}'
+    f_path = root_path + f'/taq_data/original_data_{year}'
     files = os.listdir(f_path)
 
     tickers = []
