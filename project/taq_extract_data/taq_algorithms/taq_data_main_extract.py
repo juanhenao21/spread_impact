@@ -83,9 +83,9 @@ def main():
 
     # Run analysis
     # Use the following function if you have all the C++ modules
-    taq_data_analysis_extract.taq_build_from_scratch(tickers, year)
+    # taq_data_analysis_extract.taq_build_from_scratch(tickers, year)
     # Use this function if you have the year csv files of the stocks
-    taq_data_analysis_extract.taq_daily_data_extract(tickers, year)
+    # taq_data_analysis_extract.taq_daily_data_extract(tickers, year)
 
     # Analysis and plot
     taq_data_plot_generator(tickers, year)
