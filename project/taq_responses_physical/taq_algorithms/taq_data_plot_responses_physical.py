@@ -4,6 +4,7 @@ The functions in the module plot the data obtained in the
 taq_data_analysis_responses_physical module.
 
 This script requires the following modules:
+    * gc
     * matplotlib
     * numpy
     * pickle
@@ -22,6 +23,7 @@ The module contains the following functions:
 # ----------------------------------------------------------------------------
 # Modules
 
+import gc
 from matplotlib import pyplot as plt
 import numpy as np
 import pickle
@@ -72,6 +74,11 @@ def taq_self_response_year_avg_responses_physical_plot(ticker, year):
         # Plotting
         taq_data_tools_responses_physical \
             .taq_save_plot(function_name, figure, ticker, ticker, year, '')
+
+        plt.close()
+        del self_
+        del figure
+        gc.collect()
 
         return None
 
@@ -135,6 +142,11 @@ def taq_cross_response_year_avg_responses_physical_plot(ticker_i, ticker_j,
             taq_data_tools_responses_physical \
                 .taq_save_plot(function_name, figure, ticker_i, ticker_j,
                                year, '')
+
+            plt.close()
+            del cross
+            del figure
+            gc.collect()
 
             return None
 
