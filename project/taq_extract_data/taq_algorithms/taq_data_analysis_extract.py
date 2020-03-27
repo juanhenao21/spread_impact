@@ -200,6 +200,16 @@ def taq_data_extract(ticker, type, year):
         print('Data Saved')
         print()
 
+        # Obtain the absolute path of the current file and split it
+        abs_path = os.path.abspath(__file__).split('/')
+        # Take the path from the start to the project folder
+        root_path = '/'.join(abs_path[:abs_path.index('project') + 1])
+        # CSV file
+        f_path = root_path + f'/taq_data/csv_year_data_{year}/{ticker}_{year}'\
+            + f'_NASDAQ_{type}.csv'
+        # Remove CSV file
+        subprocess.call(f'rm {f_path}', shell=True)
+
         return None
 
     except FileNotFoundError as e:
@@ -229,8 +239,8 @@ def taq_daily_data_extract(tickers, year):
     with mp.Pool(processes=mp.cpu_count()) as pool:
         pool.starmap(taq_data_extract, iprod(tickers, ['quotes'], [year]))
     # Parallel computing
-    # with mp.Pool(processes=mp.cpu_count()) as pool:
-    #     pool.starmap(taq_data_extract, iprod(tickers, ['trades'], [year]))
+    with mp.Pool(processes=mp.cpu_count()) as pool:
+        pool.starmap(taq_data_extract, iprod(tickers, ['trades'], [year]))
 
     return None
 
