@@ -249,25 +249,34 @@ def taq_get_tickers_data(year):
     abs_path = os.path.abspath(__file__).split('/')
     # Take the path from the start to the project folder
     root_path = '/'.join(abs_path[:abs_path.index('project') + 1])
-    # Using HDF5 files
-    # f_path = root_path + f'/taq_data/hdf5_daily_data_{year}'
-    # Using original files
-    # f_path = root_path + f'/taq_data/original_year_data_{year}'
-    # files = os.listdir(f_path)
-    # Using CSV files
-    f_path = root_path + f'/taq_data/csv_year_data_{year}'
-    files = os.listdir(f_path)
+    if (os.path.exists(root_path + f'/taq_data/original_year_data_{year}')):
+        # Using original files
+        f_path = root_path + f'/taq_data/original_year_data_{year}'
+        files = os.listdir(f_path)
+    elif (os.path.exists(root_path + f'/taq_data/csv_year_data_{year}')):
+        # Using CSV files
+        f_path = root_path + f'/taq_data/csv_year_data_{year}'
+        files = os.listdir(f_path)
+    else:
+        # Using HDF5 files
+        f_path = root_path + f'/taq_data/hdf5_daily_data_{year}'
+        files = os.listdir(f_path)
 
     tickers = []
 
     # Get the ticker symbols
     for file in files:
-        # Using HDF5 files
-        # tickers.append(file.split('_')[1])
-        # Using original files
-        # tickers.append(file.split('_')[0])
-        # Using CSV files
-        tickers.append(file.split('_')[0])
+
+        if (os.path.exists(
+                root_path + f'/taq_data/original_year_data_{year}')):
+            # Using original files
+            tickers.append(file.split('_')[0])
+        elif (os.path.exists(root_path + f'/taq_data/csv_year_data_{year}')):
+            # Using CSV files
+            tickers.append(file.split('_')[0])
+        else:
+            # Using HDF5 files
+            tickers.append(file.split('_')[1])
 
     tickers = list(set(tickers))
 
