@@ -100,6 +100,7 @@ def taq_build_from_scratch(tickers, year):
         subprocess.call('rm decompress.out', shell=True)
         subprocess.call(f'mkdir ../csv_year_data_{year}/', shell=True)
         subprocess.call(f'mv *.csv ../csv_year_data_{year}/', shell=True)
+        subprocess.call(f'rm -r ../original_year_data_{year}', shell=True)
 
     else:
         print('All the tickers have trades and quotes csv files')
@@ -241,6 +242,14 @@ def taq_daily_data_extract(tickers, year):
     # Parallel computing
     with mp.Pool(processes=mp.cpu_count()) as pool:
         pool.starmap(taq_data_extract, iprod(tickers, ['trades'], [year]))
+
+    # Obtain the absolute path of the current file and split it
+    abs_path = os.path.abspath(__file__).split('/')
+    # Take the path from the start to the project folder
+    root_path = '/'.join(abs_path[:abs_path.index('project') + 1])
+    f_path = root_path + f'/taq_data/csv_year_data_{year}/'
+    # Remove CSV folder
+    subprocess.call(f'rm -r {f_path}', shell=True)
 
     return None
 
