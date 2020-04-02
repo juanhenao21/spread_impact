@@ -37,7 +37,7 @@ import taq_data_tools_avg_responses_physical
 # -----------------------------------------------------------------------------
 
 
-def taq_data_plot_generator(div, year):
+def taq_data_plot_generator(year):
     """Generates all the analysis and plots from the TAQ data.
 
     :param div: integer of the number of divisions in the tickers (i.e. 5).
@@ -83,7 +83,7 @@ def main():
 
     # Run analysis
     # Analysis and plot
-    taq_data_plot_generator(div, year)
+    taq_data_plot_generator(year)
 
     print('Ay vamos!!')
 
