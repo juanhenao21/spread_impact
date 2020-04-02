@@ -49,7 +49,7 @@ def taq_self_response_year_avg_responses_physical_plot(year):
                                             '')
 
         # Load data
-        resp_g1, resp_g2, resp_g3 = pickle.load(open(
+        resp_g1, resp_g2, resp_g3, resp_g4, resp_g5 = pickle.load(open(
             f'../../taq_data/avg_responses_physical_data_{year}/taq_self'
             + f'_response_year_avg_responses_physical_data/taq_self_response'
             + f'_year_avg_responses_physical_data_{year}_.pickle', 'rb'))
@@ -59,6 +59,8 @@ def taq_self_response_year_avg_responses_physical_plot(year):
         plt.semilogx(resp_g1, linewidth=5, label=f'Group 1')
         plt.semilogx(resp_g2, linewidth=5, label=f'Group 2')
         plt.semilogx(resp_g3, linewidth=5, label=f'Group 3')
+        plt.semilogx(resp_g4, linewidth=5, label=f'Group 4')
+        plt.semilogx(resp_g5, linewidth=5, label=f'Group 5')
 
         plt.legend(loc='best', fontsize=25)
         plt.title('Self-response', fontsize=40)
