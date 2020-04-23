@@ -49,12 +49,19 @@ def taq_data_plot_generator(year):
     tickers = taq_data_analysis_avg_responses_physical \
         .taq_tickers_spread_data(year)
 
+    file = open('stocks.txt', 'w')
     for t_idx, ticker in enumerate(tickers):
         print(f'GROUP {t_idx + 1}')
+        file.write(f'GROUP {t_idx + 1}\n')
+        print(len(ticker))
         for t in ticker:
-            print(t)
+            # print(t)
+            file.write(f'{t}\n')
         print(f'Number of tickers group {t_idx + 1}: {len(ticker)}')
+        file.write(f'Number of tickers group {t_idx + 1}: {len(ticker)}\n')
+        file.write('\n')
         print()
+    file.close()
 
     taq_data_analysis_avg_responses_physical \
         .taq_self_response_year_avg_responses_physical_data(tickers, year)
@@ -76,7 +83,6 @@ def main():
     """
 
     year = '2008'
-    div = 5
 
     # Basic folders
     taq_data_tools_avg_responses_physical.taq_start_folders(year)
