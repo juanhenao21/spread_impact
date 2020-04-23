@@ -59,19 +59,19 @@ def taq_tickers_spread_data(year):
         tickers = []
 
         g1 = spread_data[spread_data['Avg_Spread'] < 0.03]
-        tickers_g1 = g1['Ticker'].tolist()
-        g2 = spread_data[(spread_data['Avg_Spread'] <= 0.03)
-                         & spread_data['Avg_Spread'] < 0.06]
-        tickers_g2 = g2['Ticker'].tolist()
-        g3 = spread_data[(spread_data['Avg_Spread'] <= 0.06)
-                         & spread_data['Avg_Spread'] < 0.09]
-        tickers_g3 = g3['Ticker'].tolist()
-        g4 = spread_data[(spread_data['Avg_Spread'] <= 0.09)
-                         & spread_data['Avg_Spread'] < 0.15]
-        tickers_g4 = g4['Ticker'].tolist()
-        g5 = spread_data[(spread_data['Avg_Spread'] <= 0.15)
-                         & spread_data['Avg_Spread'] < 0.4]
-        tickers_g5 = g5['Ticker'].tolist()
+        tickers_g1 = tuple(g1['Ticker'].tolist())
+        g2 = spread_data[(spread_data['Avg_Spread'] >= 0.03)
+                         & (spread_data['Avg_Spread'] < 0.06)]
+        tickers_g2 = tuple(g2['Ticker'].tolist())
+        g3 = spread_data[(spread_data['Avg_Spread'] >= 0.06)
+                         & (spread_data['Avg_Spread'] < 0.09)]
+        tickers_g3 = tuple(g3['Ticker'].tolist())
+        g4 = spread_data[(spread_data['Avg_Spread'] >= 0.09)
+                         & (spread_data['Avg_Spread'] < 0.15)]
+        tickers_g4 = tuple(g4['Ticker'].tolist())
+        g5 = spread_data[(spread_data['Avg_Spread'] >= 0.15)
+                         & (spread_data['Avg_Spread'] < 0.4)]
+        tickers_g5 = tuple(g5['Ticker'].tolist())
 
         tickers.append(tickers_g1)
         tickers.append(tickers_g2)
@@ -110,15 +110,18 @@ def taq_self_response_year_avg_responses_physical_data(tickers, year):
     results_avg = []
 
     for ticker in tickers:
-        response = np.zeros(__tau__)
+        sum_response = np.zeros(__tau__)
+
         for tick in ticker:
             # Load data
-            response += pickle.load(open(
+            response = pickle.load(open(
                 f'../../taq_data/responses_physical_data_{year}/taq_self'
                 + f'_response_year_responses_physical_data/taq_self_response'
                 + f'_year_responses_physical_data_{year}_{tick}.pickle', 'rb'))
 
-        avg_response = response / len(ticker)
+            sum_response += response
+
+        avg_response = sum_response / len(ticker)
         results_avg.append(avg_response)
 
     results_avg = tuple(results_avg)
