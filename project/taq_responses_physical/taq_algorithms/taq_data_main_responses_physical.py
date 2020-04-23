@@ -56,7 +56,7 @@ def taq_data_plot_generator(tickers, year):
         taq_data_analysis_responses_physical \
             .taq_self_response_year_responses_physical_data(ticker, year)
 
-    ticker_prod = iprod(tickers, tickers)
+    # ticker_prod = iprod(tickers, tickers)
     # ticker_prod = [('AAPL', 'MSFT'), ('MSFT', 'AAPL'),
     #                ('GS', 'JPM'), ('JPM', 'GS'),
     #                ('CVX', 'XOM'), ('XOM', 'CVX'),
